@@ -1,0 +1,103 @@
+<?php
+$cookie_lifetime =  (int)Mage::getStoreConfig('agepopup/settings/cookie_lifetime');
+if(!isset($_COOKIE['tmpopup_life']) || empty($_COOKIE['tmpopup_life']) || $cookie_lifetime == 0) {
+	$show_popup = false;
+	$allow_pages = Mage::getStoreConfig('agepopup/settings/allow_pages');
+	if ($allow_pages == 1) {
+		$show_popup = true;
+	} else {
+		$specific_pages = Mage::getStoreConfig('agepopup/settings/specific_pages');
+		$specific_pages = explode(',',$specific_pages);
+		$route = Mage::app()->getFrontController()->getRequest()->getRouteName();
+		if ($route == 'cms') {
+			$page = Mage::getSingleton('cms/page')->getIdentifier();
+		} else if ($route == 'contacts') {
+			$page = 'contacts-index-index';
+		} else if (Mage::registry('current_category')) {
+			$page = 'catalog-category-view';
+		} else if (Mage::registry('current_product') || Mage::app()->getFrontController()->getRequest()->getRequestedActionName() == 'configure') {
+			$page = 'catalog-product-view';
+		}
+		
+		if (isset($page) && in_array($page, $specific_pages)) {
+			$show_popup = true;
+		}
+	}
+	
+	if ($show_popup) {
+?>
+        <div id="tmpopupoverlay"></div>
+        <div id="tmpopup">
+            <div class="tmpopupcontent">
+                <div class="tmpopup-top-content">
+                <?php echo Mage::getStoreConfig('agepopup/settings/top_content') ?>
+                </div>
+                <div class="tmpopup-controls">
+                    <a href="<?php echo Mage::getStoreConfig('agepopup/settings/leave_site_url') ?>" class="leave_button">
+                    <?php echo Mage::getStoreConfig('agepopup/settings/leave_button_text') ?>
+                    </a>
+                    <a href="javascript:void(0)" class="enter_button" onclick="checkAge()">
+                    <?php echo Mage::getStoreConfig('agepopup/settings/enter_button_text') ?>
+                    </a>
+                </div>
+                <div class="tmpopup-bottom-content">
+                <?php echo Mage::getStoreConfig('agepopup/settings/bottom_content') ?>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        var age_need = parseInt('<?php echo Mage::getStoreConfig('agepopup/settings/age_need') ?>');
+        var allowed_age = parseInt('<?php echo Mage::getStoreConfig('agepopup/settings/allowed_age') ?>');
+        var cookie_lifetime = parseInt('<?php echo $cookie_lifetime ?>');
+        jQuery(document).ready(function(e) {
+            var tmpopup_life = getCookie("tmpopup_life");
+            if (tmpopup_life == null || tmpopup_life.length == 0 || tmpopup_life.length == "" || cookie_lifetime == 0) {
+                jQuery('#tmpopupoverlay').show();
+                jQuery('#tmpopup').show();
+            }
+        });
+        function checkAge()
+        {
+            if (age_need == 1) {
+                var age_input = window.prompt("Please enter your age");
+                if (age_input == null || age_input.length == 0) {
+                    
+                } else if (age_input >= allowed_age) {
+                    jQuery('#tmpopup').hide();
+                    jQuery('#tmpopupoverlay').hide();
+                    setCookie("tmpopup_life", 'age', cookie_lifetime);
+                } else {
+                    alert('Sorry you are not legally allowed to purchase our products, please do not enter this site.');
+                    location.href = '<?php echo Mage::getStoreConfig('agepopup/settings/leave_site_url') ?>';
+                }
+            } else {
+                jQuery('#tmpopup').hide();
+                jQuery('#tmpopupoverlay').hide();
+                setCookie("tmpopup_life", 'age', cookie_lifetime);
+            }
+        }
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length,c.length);
+                }
+            }
+            return "";
+        }
+        </script>
+<?php
+	}
+}
+?>

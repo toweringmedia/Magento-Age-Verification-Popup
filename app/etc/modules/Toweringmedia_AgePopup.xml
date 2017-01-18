@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Toweringmedia_AgePopup>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Toweringmedia_AgePopup>
+    </modules>
+</config>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default translate="label">
+        <reference name="head">
+        	<block type="agepopup/head"/>
+        </reference>
+		<reference name="after_body_start">
+        	<block type="agepopup/popup"/>
+        </reference>
+    </default>
+</layout>

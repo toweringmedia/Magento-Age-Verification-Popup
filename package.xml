@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>ToweringMedia_AgePopup</name>
+    <version>0.1.0</version>
+    <stability>stable</stability>
+    <license>OSL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>TM Popup 1.0</summary>
+    <description>TM Popup 1.0</description>
+    <notes>First stable release</notes>
+    <authors><author><name>Committedpro</name><user>Committedpro</user><email>kulance@gmail.com</email></author></authors>
+    <date>2016-11-15</date>
+    <time>21:24:16</time>
+    <contents><target name="magelocal"><dir name="Toweringmedia"><dir name="AgePopup"><dir name="Block"><file name="Head.php" hash="76670596c42b1fa63becc7b3c3d94987"/><file name="Popup.php" hash="146d1b5abfd2a7993763a23e9bf073b3"/></dir><dir name="Helper"><file name="Data.php" hash="398c748f315b81d9ce688d9be2309c90"/></dir><dir name="Model"><dir name="System"><dir name="Config"><dir name="Source"><file name="Pageoption.php" hash="9dcb7a2f78064db6ee29cda19aff1c14"/><file name="Pages.php" hash="aa30422917b09b434453d029a1ad76a8"/></dir></dir></dir></dir><dir name="etc"><file name="config.xml" hash="0bb2854a3a156575a5678e4f01143c24"/><file name="system.xml" hash="eb8f12ea6b6749b63db2b15fbec6b1a2"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Toweringmedia_AgePopup.xml" hash="704e8bfe7a31324e6b8d3cf1840af5ff"/></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="toweringmedia"><file name="agepopup.xml" hash="6c154f108615fd296c547559bfa3cb5a"/></dir></dir><dir name="template"><dir name="toweringmedia"><dir name="agepopup"><file name="head.phtml" hash="039f584a81d0698d49e499ecc8a50787"/><file name="popup.phtml" hash="c85b42207576845e544b5f0ecba9cad4"/></dir></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="base"><dir name="default"><dir name="toweringmedia"><dir name="agepopup"><file name="tmpopup.css" hash="d1ddedfa0377c54478ac8941dbaff199"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.0.0</min><max>7.0.0</max></php></required></dependencies>
+</package>

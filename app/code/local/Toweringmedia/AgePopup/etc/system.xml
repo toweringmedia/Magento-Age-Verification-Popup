@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <toweringmedia translate="label" module="agepopup">
+            <label>Towering Media</label>
+            <sort_order>101</sort_order>
+        </toweringmedia>
+    </tabs>
+	<sections>
+		<agepopup translate="label" module="agepopup">
+            <label>TM Popup</label>
+            <tab>toweringmedia</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>40</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+   	        	<settings translate="label">
+                    <label>Configuration</label>
+					<expanded>1</expanded>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                           	<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </active>
+						<allow_pages translate="label">
+                            <label>Select Pages</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>agepopup/system_config_source_pageoption</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </allow_pages>
+					   <specific_pages translate="label">
+                            <label>Specific Pages</label>
+                            <frontend_type>multiselect</frontend_type>
+							<source_model>agepopup/system_config_source_pages</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><allow_pages>2</allow_pages></depends>
+							<validate>required-entry</validate>
+                        </specific_pages>
+					    <top_content translate="label">
+					   		<label>Top Section Text</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</top_content>
+						<bottom_content translate="label">
+					   		<label>Bottom Section Text</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</bottom_content>
+						<bottom_content translate="label">
+					   		<label>Bottom Section Text</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</bottom_content>
+						<leave_button_text translate="label">
+					   		<label>Leave Button Text</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</leave_button_text>
+						<leave_site_url translate="label">
+					   		<label>Leave Site URL</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>required-entry</validate>
+						</leave_site_url>
+						<enter_button_text translate="label">
+					   		<label>Enter Button Text</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enter_button_text>
+						<age_need translate="label">
+                            <label>Age Need To Enter?</label>
+                            <frontend_type>select</frontend_type>
+                           	<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>If customer needed to enter the age while clicking the 'Enter' to the site.</comment>
+                        </age_need>
+						<allowed_age translate="label">
+                            <label>Minimum Allowed Age</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><age_need>1</age_need></depends>
+							<validate>required-entry validate-digits validate-length maximum-length-3 minimum-length-2 validate-digits-range digits-range-10-150</validate>
+							<comment>Allowed value between 10-150</comment>
+                        </allowed_age>
+						<cookie_lifetime translate="label">
+                            <label>Cookie Lifetime</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>required-entry validate-digits</validate>
+							<comment>In Days</comment>
+                        </cookie_lifetime>
+                    </fields>
+                </settings>
+			</groups>
+        </agepopup>
+	</sections>
+</config>

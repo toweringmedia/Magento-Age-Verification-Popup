@@ -1,0 +1,56 @@
+#tmpopupoverlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	background: #999;
+	width: 100%;
+	height: 100%;
+	opacity: 0.8;
+	z-index: 10000;
+	display:none;
+}
+#tmpopup {
+	position: fixed;
+	top: 30%;
+	left: 20%;
+	right: 20%;
+	background: #fff;
+	width: 60%;
+	z-index: 10001;
+	display:none;
+	border-radius:5px;
+}
+.tmpopupcontent{
+	padding:15px;
+}
+.tmpopup-top-content{
+	padding-bottom:30px;
+}
+.tmpopup-controls{
+	text-align:center;
+}
+.tmpopup-bottom-content{
+	padding-top:30px;
+}
+.leave_button{
+	font-size: 1em;
+	padding: 8px 20px;
+	background:#333;
+	color: #fff;
+	border-radius: 6px;
+	text-decoration: none;
+	margin:20px;
+}
+.enter_button{
+	font-size: 1em;
+	padding: 8px 16px;
+	background:#333;
+	color: #fff;
+	border-radius: 6px;
+	text-decoration: none;
+	margin:20px;
+}
+
+.leave_button:hover, .enter_button:hover{
+	text-decoration: none;
+}
